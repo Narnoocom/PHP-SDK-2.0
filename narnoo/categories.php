@@ -2,7 +2,7 @@
 
 class Category extends WebClient {
 
-    public $url = 'http://localhost:8888/api/2.0/index.php/category/';
+    public $url = 'http://connect.narnoo.com/category/';
     public $authen;
 
     public function __construct($api_settings) {
