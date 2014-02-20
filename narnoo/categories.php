@@ -10,7 +10,7 @@ class Category extends WebClient {
         $this->authen = $api_settings;
     }
     
-    public function categories() {
+    public function getCategories() {
 
         $method = 'categories';
 
@@ -24,7 +24,7 @@ class Category extends WebClient {
         }
     }
     
-    public function subCategories($id) {
+    public function getSubCategories($id) {
 
         $method = 'subcategories';
         

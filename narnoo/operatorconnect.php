@@ -180,7 +180,7 @@ class Operatorconnect extends WebClient {
         $method = 'geo';
         
 
-        $this->setUrl($this->url . $method .'?latitude='. $lat . '&longiture=' .$long . '&distance='. $distance);
+        $this->setUrl($this->url . $method .'?latitude='. $lat . '&longitude=' .$long . '&distance='. $distance);
         $this->setGet();
         try {
             return json_decode( $this->getResponse($this->authen) );

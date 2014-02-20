@@ -1,6 +1,6 @@
 <?php
-include 'narnoo/http/WebClient.php';
-include 'narnoo/operatorconnect.php';
+include '../../narnoo/http/WebClient.php';
+include '../../narnoo/categories.php';
 
 $api_settings = array(
 	"API-KEY: 8WMVJYd5TF53o0xHTS",
@@ -9,8 +9,8 @@ $api_settings = array(
 );
 
 
-$http_request = new Operatorconnect($api_settings);
-$response = $http_request->getImages(39);
+$http_request = new Category($api_settings);
+$response = $http_request->getCategories();
 print_r($response);
 
 ?>
