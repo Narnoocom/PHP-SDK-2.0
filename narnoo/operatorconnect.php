@@ -243,7 +243,7 @@ class Operatorconnect extends WebClient {
         
 
         $this->setUrl($this->url . $method);
-        $httpClient->setPost( "id=".$op_id."&album_id=".$album_id."&image_id=".$image_id );
+        $this->setPost( "id=".$op_id."&album_id=".$album_id."&image_id=".$image_id );
         try {
             return json_decode( $this->getResponse($this->authen) );
         } catch (Exception $e) {
@@ -257,7 +257,7 @@ class Operatorconnect extends WebClient {
         
 
         $this->setUrl($this->url . $method);
-        $httpClient->setPost( "id=".$op_id."&name=".$album_name );
+        $this->setPost( "id=".$op_id."&name=".trim($album_name) );
         try {
             return json_decode( $this->getResponse($this->authen) );
         } catch (Exception $e) {
@@ -271,7 +271,7 @@ class Operatorconnect extends WebClient {
         
 
         $this->setUrl($this->url . $method);
-        $httpClient->setPost( "id=".$op_id."&album_id=".$album_id );
+        $this->setPost( "id=".$op_id."&album_id=".$album_id );
         try {
             return json_decode( $this->getResponse($this->authen) );
         } catch (Exception $e) {
@@ -285,7 +285,7 @@ class Operatorconnect extends WebClient {
         
 
         $this->setUrl($this->url . $method);
-        $httpClient->setPost( "id=".$op_id."&album_id=".$album_id."&image_id=".$image_id );
+        $this->setPost( "id=".$op_id."&album_id=".$album_id."&image_id=".$image_id );
         try {
             return json_decode( $this->getResponse($this->authen) );
         } catch (Exception $e) {
@@ -299,7 +299,7 @@ class Operatorconnect extends WebClient {
         
 
         $this->setUrl($this->url . $method);
-        $httpClient->setPost( "id=".$op_id."&brochure_id=".$bro_id."&caption=".$caption );
+        $this->setPost( "id=".$op_id."&brochure_id=".$bro_id."&caption=".$caption );
         try {
             return json_decode( $this->getResponse($this->authen) );
         } catch (Exception $e) {
@@ -313,7 +313,7 @@ class Operatorconnect extends WebClient {
         
 
         $this->setUrl($this->url . $method);
-        $httpClient->setPost( "id=".$op_id."&brochure_id=".$bro_id."&access=".$access );
+        $this->setPost( "id=".$op_id."&brochure_id=".$bro_id."&access=".$access );
         try {
             return json_decode( $this->getResponse($this->authen) );
         } catch (Exception $e) {
@@ -328,7 +328,7 @@ class Operatorconnect extends WebClient {
         
 
         $this->setUrl($this->url . $method);
-        $httpClient->setPost( "id=".$op_id."&video_id=".$video_id."&caption=".$caption );
+        $this->setPost( "id=".$op_id."&video_id=".$video_id."&caption=".$caption );
         try {
             return json_decode( $this->getResponse($this->authen) );
         } catch (Exception $e) {
@@ -342,7 +342,7 @@ class Operatorconnect extends WebClient {
         
 
         $this->setUrl($this->url . $method);
-        $httpClient->setPost( "id=".$op_id."&video_id=".$video_id."&access=".$access );
+        $this->setPost( "id=".$op_id."&video_id=".$video_id."&access=".$access );
         try {
             return json_decode( $this->getResponse($this->authen) );
         } catch (Exception $e) {
@@ -356,7 +356,7 @@ class Operatorconnect extends WebClient {
         
 
         $this->setUrl($this->url . $method);
-        $httpClient->setPost( "id=".$op_id."&imageid=".$image_id."&caption=".$caption );
+        $this->setPost( "id=".$op_id."&imageid=".$image_id."&caption=".$caption );
         try {
             return json_decode( $this->getResponse($this->authen) );
         } catch (Exception $e) {
@@ -370,7 +370,7 @@ class Operatorconnect extends WebClient {
         
 
         $this->setUrl($this->url . $method);
-        $httpClient->setPost( "id=".$op_id."&image_id=".$image_id."&access=".$access );
+        $this->setPost( "id=".$op_id."&image_id=".$image_id."&access=".$access );
         try {
             return json_decode( $this->getResponse($this->authen) );
         } catch (Exception $e) {
