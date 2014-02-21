@@ -306,22 +306,7 @@ class Operatorconnect extends WebClient {
             return 'Error: ' . $e->getMessage();
         }
     }
-    
-    public function editBrochurePrivilege($op_id,$bro_id,$access) {
-
-        $method = 'edit_brochure_privilege';
-        
-
-        $this->setUrl($this->url . $method);
-        $this->setPost( "id=".$op_id."&brochure_id=".$bro_id."&access=".$access );
-        try {
-            return json_decode( $this->getResponse($this->authen) );
-        } catch (Exception $e) {
-            return 'Error: ' . $e->getMessage();
-        }
-    }
-    
-    
+       
     public function editVideoCaption($op_id,$video_id,$caption) {
 
         $method = 'edit_video_caption';
@@ -336,48 +321,19 @@ class Operatorconnect extends WebClient {
         }
     }
     
-    public function editVideoPrivilege($op_id,$video_id,$access) {
-
-        $method = 'edit_video_privilege';
-        
-
-        $this->setUrl($this->url . $method);
-        $this->setPost( "id=".$op_id."&video_id=".$video_id."&access=".$access );
-        try {
-            return json_decode( $this->getResponse($this->authen) );
-        } catch (Exception $e) {
-            return 'Error: ' . $e->getMessage();
-        }
-    }
-    
     public function editImageCaption($op_id,$image_id,$caption) {
 
         $method = 'edit_image_caption';
         
 
         $this->setUrl($this->url . $method);
-        $this->setPost( "id=".$op_id."&imageid=".$image_id."&caption=".$caption );
+        $this->setPost( "id=".$op_id."&image_id=".$image_id."&caption=".$caption );
         try {
             return json_decode( $this->getResponse($this->authen) );
         } catch (Exception $e) {
             return 'Error: ' . $e->getMessage();
         }
     }
-    
-    public function editImagePrivilege($op_id,$image_id,$access) {
-
-        $method = 'edit_image_privilege';
-        
-
-        $this->setUrl($this->url . $method);
-        $this->setPost( "id=".$op_id."&image_id=".$image_id."&access=".$access );
-        try {
-            return json_decode( $this->getResponse($this->authen) );
-        } catch (Exception $e) {
-            return 'Error: ' . $e->getMessage();
-        }
-    }
-    
     
 }
 
