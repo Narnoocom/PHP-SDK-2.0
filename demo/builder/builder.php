@@ -10,7 +10,7 @@ $api_settings = array(
 
 
 $http_request = new Listbuilder($api_settings);
-$response = $http_request->builder(39,3); //pass operator ID
+$response = $http_request->builder(39,NULL,TRUE,TRUE,TRUE); //pass operator TRUE for each of the neeeded items
 echo '<pre>';
 print_r($response);
 echo '</pre>';

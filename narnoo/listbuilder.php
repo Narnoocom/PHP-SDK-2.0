@@ -10,12 +10,21 @@ class Listbuilder extends WebClient {
         $this->authen = $authenticate;
     }
     
-    public function builder($op_id,$images=NULL) {
+    public function builder($op_id,$images=NULL,$brochure=NULL,$video=NULL,$description=NULL) {
 
         $method = 'builder';
         
         if(!empty($images)){
         $post_builder .= '&images='.$images;
+        }
+        if(!empty($brochure)){
+        $post_builder .= '&brochure='.$brochure;
+        }
+        if(!empty($video)){
+        $post_builder .= '&video='.$video;
+        }
+        if(!empty($description)){
+        $post_builder .= '&description='.$description;
         }
 
         $this->setUrl($this->url . $method);
