@@ -10,7 +10,7 @@ class Listbuilder extends WebClient {
         $this->authen = $authenticate;
     }
     
-    public function builder($op_id,$images=NULL,$brochure=NULL,$video=NULL,$description=NULL) {
+    public function builder($op_id,$images=NULL,$brochure=NULL,$video=NULL,$description=NULL,$social=NULL) {
 
         $method = 'builder';
         
@@ -25,6 +25,9 @@ class Listbuilder extends WebClient {
         }
         if(!empty($description)){
         $post_builder .= '&description='.$description;
+        }
+         if(!empty($social)){
+        $post_builder .= '&social='.$social;
         }
 
         $this->setUrl($this->url . $method);
