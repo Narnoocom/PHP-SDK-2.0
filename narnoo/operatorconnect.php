@@ -335,6 +335,20 @@ class Operatorconnect extends WebClient {
         }
     }
     
+    public function getSocial($id) {
+
+        $method = 'social';
+
+        $this->setUrl($this->url.$method.'/'.$id);
+        $this->setGet();
+        try {
+            $response = json_decode( $this->getResponse($this->authen),TRUE);
+            return $response;
+        } catch (Exception $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+    
 }
 
 ?>

@@ -1,6 +1,6 @@
 <?php
 include '../../narnoo/http/WebClient.php';
-include '../../narnoo/listbuilder.php';
+include '../../narnoo/operatorconnect.php';
 
 $api_settings = array(
 	"API-KEY: 8WMVJYd5TF53o0xHTS",
@@ -9,8 +9,8 @@ $api_settings = array(
 );
 
 
-$http_request = new Listbuilder($api_settings);
-$response = $http_request->builder(39,8,TRUE,TRUE,TRUE,TRUE); //pass operator TRUE for each of the neeeded items pass the number of images you want upto 10 - pass NULL if not needed
+$http_request = new Operatorconnect($api_settings);
+$response = $http_request->getSocial(39); //pass operator ID
 echo '<pre>';
 print_r($response);
 echo '</pre>';
