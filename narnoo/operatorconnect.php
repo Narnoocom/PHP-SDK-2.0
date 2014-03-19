@@ -231,6 +231,20 @@ class Operatorconnect extends WebClient {
         }
     }
     
+    public function getSocial($id) {
+
+        $method = 'social';
+
+        $this->setUrl($this->url.$method.'/'.$id);
+        $this->setGet();
+        try {
+            $response = json_decode( $this->getResponse($this->authen),TRUE);
+            return $response;
+        } catch (Exception $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+    
    /****************
     * 
     * POST REQUESTS
@@ -335,15 +349,114 @@ class Operatorconnect extends WebClient {
         }
     }
     
-    public function getSocial($id) {
+    
+    
+    public function deleteImage($op_id,$image_id) {
 
-        $method = 'social';
+        $method = 'delete_image';
 
-        $this->setUrl($this->url.$method.'/'.$id);
-        $this->setGet();
+        $this->setUrl($this->url.$method);
+        $this->setPost( "id=".$op_id."&image_id=".$image_id );
         try {
             $response = json_decode( $this->getResponse($this->authen),TRUE);
             return $response;
+        } catch (Exception $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+    
+    public function deleteDescription($op_id,$description_id) {
+
+        $method = 'delete_description';
+
+        $this->setUrl($this->url.$method);
+        $this->setPost( "id=".$op_id."&description_id=".$description_id );
+        try {
+            $response = json_decode( $this->getResponse($this->authen),TRUE);
+            return $response;
+        } catch (Exception $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+    
+    public function deleteBrochure($op_id,$brochure_id) {
+
+        $method = 'delete_brochure';
+
+        $this->setUrl($this->url.$method);
+        $this->setPost( "id=".$op_id."&brochure_id=".$image_id );
+        try {
+            $response = json_decode( $this->getResponse($this->authen),TRUE);
+            return $response;
+        } catch (Exception $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+    public function deleteVideo($op_id,$video_id) {
+
+        $method = 'delete_video ';
+
+        $this->setUrl($this->url.$method);
+        $this->setPost( "id=".$op_id."&video_id=".$video_id );
+        try {
+            $response = json_decode( $this->getResponse($this->authen),TRUE);
+            return $response;
+        } catch (Exception $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+    
+     public function descriptionCreate($op_id,$description_name) {
+
+        $method = 'description_create';
+        
+
+        $this->setUrl($this->url . $method);
+        $this->setPost( "id=".$op_id."&name=".trim($description_name) );
+        try {
+            return json_decode( $this->getResponse($this->authen) );
+        } catch (Exception $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+    
+    public function removeOperator($op_id) {
+
+        $method = 'operator_remove';
+        
+
+        $this->setUrl($this->url . $method);
+        $this->setPost( "id=".$op_id);
+        try {
+            return json_decode( $this->getResponse($this->authen) );
+        } catch (Exception $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+    
+    public function addOperator($op_id) {
+
+        $method = 'operator_add';
+        
+
+        $this->setUrl($this->url . $method);
+        $this->setPost( "id=".$op_id);
+        try {
+            return json_decode( $this->getResponse($this->authen) );
+        } catch (Exception $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+    
+    public function getOperators() {
+
+        $method = 'list_operators';
+        
+
+        $this->setUrl($this->url . $method);
+        $this->setGet();
+        try {
+            return json_decode( $this->getResponse($this->authen) );
         } catch (Exception $e) {
             return 'Error: ' . $e->getMessage();
         }
