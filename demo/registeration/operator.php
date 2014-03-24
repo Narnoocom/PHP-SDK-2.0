@@ -19,15 +19,17 @@ include '../../narnoo/operator_register.php';
                 *Entertainment
                 *Service
                 *Retail
-        post('subcategory'); --> If subcategory does not exist then the API will best guess the subcategory, if that fails we have an updating list of words that match our subcategories. You can get operator to check and update these details if needed.
+        post('subcategory'); --> If subcategory does not exist, then the API will best guess the subcategory, if that fails we have an updating list of words that match our subcategories. You can get operator to check and update these details if needed.
         
-        Optional
+        Optional*****
         post('keywords'); --> if left out, we set keyworks as business name and category
- 
+        
+        Optional*****
         Either Latitude and Longitude or Address
         post('latitude');
         post('longitude');
-
+        
+        Optional*****
         post('address'); -> Ideally the full address format. ( Number Street Suburb State Postcode Country )
  * 
  * @notitifcations --> The operator is notified of account creation and the Distributor is CC'd into this email.
@@ -39,7 +41,7 @@ include '../../narnoo/operator_register.php';
 
 
 $http_request = new Register($api_settings);
-$response = $http_request->registerOperator('James Tours Delete','hector davies','jimkenwells@hotmail.com','http://www.narnoo.com/','61','07','40535867','Attraction','Adventure','Test,delete,Narnoo','-16.9055538536089','145.723879276047',NULL);
+$response = $http_request->registerOperator('{ business name }','{ contact name }','{ email }','{ http://www.website.com/ }','{ country code }','{ area code }','{ phone number }','{ Category }','{ Sub Category }','{ Keywords }','{ Latitude }','{ Longitude }','{ Address }');
 echo '<pre>';
 print_r($response);
 echo '</pre>';
