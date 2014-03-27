@@ -4,13 +4,13 @@ include 'narnoo/http/WebClient.php';
 include 'narnoo/authenticate.php';
 
 $api_settings = array(
-	"API-KEY: { ACCESS KEYS }",
-	"API-SECRET-KEY: { SECRET KEYS }"
+	"API-KEY:{ Access key }",
+	"API-SECRET-KEY:{ Secret Key }"
 );
 
 
 $http_request = new Authenticate($api_settings);
-$response = $http_request->access("{ ACCESS KEYS }","{ SECRET KEYS }");
+$response = $http_request->access("{ Access key }","{ Secret Key }");
 print_r($response);
 
 ?>
