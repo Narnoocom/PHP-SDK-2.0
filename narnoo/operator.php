@@ -76,6 +76,27 @@ class Operator extends WebClient {
             return 'Error: ' . $e->getMessage();
         }
     }
+    
+    public function uploadImage($file_path) {
+
+        $method = 'upload_image';
+        
+        $extension = pathinfo($file_path,PATHINFO_EXTENSION);
+        $file_size = filesize($file_path);
+        array_push($this->authen,'File-Type: '. $extension);
+        array_push($this->authen,'File-Size: '. $file_size);
+        $postData = array(
+                'image_contents' => '@'.$file_path,
+        );
+        $this->setUrl($this->operator_url . $method);
+        $this->setPost($postData);
+        try {
+            return json_decode( $this->getResponse($this->authen) );
+       } catch (Exception $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+        
+    }
 
 }
 
