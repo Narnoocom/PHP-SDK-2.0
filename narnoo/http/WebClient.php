@@ -10,7 +10,7 @@
      protected $_cookieFileLocation = './cookie.txt'; 
      protected $_post; 
      protected $_postFields;
-     protected $_referer ="http://www.google.com"; 
+     protected $_referer;
 
      protected $_session; 
      protected $_webpage; 
@@ -121,7 +121,7 @@
          } 
          */ 
          curl_setopt($s,CURLOPT_USERAGENT,$this->_useragent); 
-         curl_setopt($s,CURLOPT_REFERER,$this->_referer); 
+         curl_setopt($s,CURLOPT_REFERER, $_SERVER['SERVER_NAME'] ); 
 
          $this->_webpage = curl_exec($s); 
          $this->_status = curl_getinfo($s,CURLINFO_HTTP_CODE); 
