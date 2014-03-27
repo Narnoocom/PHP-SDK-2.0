@@ -5,3 +5,7 @@ access.php
 
 *.php
 !/demo/distributor-operator/uploadImage.php
+!/demo/operator/uploadImage.php
+!/demo/operator/videos.php
+!/demo/operator/images.php
+!/demo/operator/account.php
