@@ -4,3 +4,4 @@ access.php
 access.php
 
 *.php
+!/demo/distributor-operator/uploadImage.php
