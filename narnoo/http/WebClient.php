@@ -2,7 +2,7 @@
 
  class WebClient { 
 
-     protected $_useragent = 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1'; 
+     protected $_useragent; 
      protected $_url; 
      protected $_followlocation; 
      protected $_timeout; 
@@ -92,8 +92,10 @@
          curl_setopt($s,CURLOPT_MAXREDIRS,$this->_maxRedirects); 
          curl_setopt($s,CURLOPT_RETURNTRANSFER,true); 
          curl_setopt($s,CURLOPT_FOLLOWLOCATION,$this->_followlocation); 
-         curl_setopt($s,CURLOPT_COOKIEJAR,$this->_cookieFileLocation); 
-         curl_setopt($s,CURLOPT_COOKIEFILE,$this->_cookieFileLocation); 
+         
+         //SET COOKIE JAR IF NEEDED
+         //  curl_setopt($s,CURLOPT_COOKIEJAR,$this->_cookieFileLocation); 
+         //  curl_setopt($s,CURLOPT_COOKIEFILE,$this->_cookieFileLocation); 
 
          if($this->authentication == 1){ 
            curl_setopt($s, CURLOPT_USERPWD, $this->auth_name.':'.$this->auth_pass); 
@@ -120,7 +122,7 @@
              curl_setopt($s,CURLOPT_BINARYTRANSFER,true); 
          } 
          */ 
-         curl_setopt($s,CURLOPT_USERAGENT,$this->_useragent); 
+         curl_setopt($s,CURLOPT_USERAGENT,$_SERVER['HTTP_USER_AGENT']); 
          curl_setopt($s,CURLOPT_REFERER, $_SERVER['SERVER_NAME'] ); 
 
          $this->_webpage = curl_exec($s); 
