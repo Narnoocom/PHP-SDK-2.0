@@ -14,6 +14,7 @@ class Listbuilder extends WebClient {
 
         $method = 'builder';
         
+        $post_builder = 'id='.$op_id;
         if(!empty($images)){
         $post_builder .= '&images='.$images;
         }
@@ -43,7 +44,7 @@ class Listbuilder extends WebClient {
         }
 
         $this->setUrl($this->url . $method);
-        $this->setPost( "id=".$op_id.$post_builder );
+        $this->setPost( $post_builder );
         try {
             return json_decode( $this->getResponse($this->authen) );
         } catch (Exception $e) {
