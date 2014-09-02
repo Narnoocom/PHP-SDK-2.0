@@ -1,5 +1,5 @@
 <?php
-$client_id = "8WMVJYd5TF53o0xYZ2";
+$client_id = "{Access-Key}";
 $state = "login";
 /*
  *   redirect_uri must be absolute uri

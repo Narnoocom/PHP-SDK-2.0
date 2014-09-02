@@ -1,5 +1,4 @@
-<?php
-// require guzzle...
+<?php 
 include 'narnoo/http/WebClient.php';
 include 'narnoo/authenticate.php';
 

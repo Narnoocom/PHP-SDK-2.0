@@ -100,7 +100,22 @@ class Distributor extends WebClient {
             return 'Error: ' . $e->getMessage();
         }
     }
-    
+	
+	
+      public function getBrochureDetails($broId) {
+
+        $method = 'brochure_details';
+        
+
+        $this->setUrl($this->distributor_url . $method .'/'. $broId );
+        $this->setGet();
+        try {
+            return json_decode( $this->getResponse($this->authen) );
+        } catch (Exception $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+   
     /****************
     * 
     * POST REQUESTS
@@ -242,7 +257,223 @@ class Distributor extends WebClient {
         }
     }
     
+    public function edit_image_privilages($id,$settings) {
+
+        $method = 'edit_image_privilages';
+        
+
+        $this->setUrl($this->distributor_url . $method);
+        $this->setPost( "id=".$id."&setting=".$settings );
+        try {
+            return json_decode( $this->getResponse($this->authen) );
+        } catch (Exception $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+	
+    public function edit_video_privilages($id,$settings) {
+
+        $method = 'edit_video_privilages';
+        
+
+        $this->setUrl($this->distributor_url . $method);
+        $this->setPost( "id=".$id."&setting=".$settings );
+        try {
+            return json_decode( $this->getResponse($this->authen) );
+        } catch (Exception $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+	
+	
+	
+    public function edit_brochure_prvilages($id,$settings) {
+
+        $method = 'edit_brochure_prvilages';
+        
+
+        $this->setUrl($this->distributor_url . $method);
+        $this->setPost( "id=".$id."&setting=".$settings );
+        try {
+            return json_decode( $this->getResponse($this->authen) );
+        } catch (Exception $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+	    public function downloadBrochure($bro_id) {
+
+        $method = 'download_brochure';
+        
+
+        $this->setUrl($this->distributor_url. $method. '/' .$bro_id);
+        $this->setGet();
+        try {
+            return json_decode( $this->getResponse($this->authen) );
+        } catch (Exception $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+	
+    public function downloadVideo($video_id) {
+
+        $method = 'download_video';
+        
+
+        $this->setUrl($this->distributor_url. $method . '/' .$video_id);
+        $this->setGet();
+        try {
+            return json_decode( $this->getResponse($this->authen) );
+        } catch (Exception $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }               
+
+    	
+    public function searchMedia($type,$id,$catname,$subcatname,$location,$keywords,$prvilleges) {
+
+        $method = 'search_media';
+        
+
+        $this->setUrl($this->distributor_url . $method);
+        $this->setPost( "type=".$type."&id=".$id."&category=".$catname."&subCategory=".$subcatname."&location=".$location."&keywords=".$keywords."&privilege=".$prvilleges);
+        try {
+            return json_decode( $this->getResponse($this->authen) );
+        } catch (Exception $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+	
+    public function geo_media_search($type,$latitude,$longitude,$distance,$category,$subcategory,$keywords) {
+
+        $method = 'geo_media_search';
+        
+
+        $this->setUrl($this->distributor_url . $method);
+        $this->setPost( "mediatype=".$type."&latitude=".$latitude."&longitude=".$longitude."&distance=".$distance."&category=".$category."&subcategory=".$subcategory."&keywords=".$keywords);
+        try {
+            return json_decode( $this->getResponse($this->authen) );
+        } catch (Exception $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+	
+      public function uploadImage($file_path) {
+
+        $method = 'upload_image';
+        
+        $extension = pathinfo($file_path,PATHINFO_EXTENSION);
+        $file_size = filesize($file_path);
+        array_push($this->authen,'File-Type: '. $extension);
+        array_push($this->authen,'File-Size: '. $file_size);
+        $postData = array(
+                'file' => '@'.$file_path
+        );
+        $this->setUrl($this->distributor_url . $method);
+        $this->setPost($postData);
+        try {
+            return json_decode( $this->getResponse($this->authen) );
+       } catch (Exception $e) {
+            return 'Error: ' . $e->getMessage();
+       }
+       
+    }
+    public function deleteVideo($video_id) {
+
+        $method = 'delete_video ';
+
+        $this->setUrl($this->distributor_url.$method);
+        $this->setPost("video_id=".$video_id );
+        try {
+            $response = json_decode( $this->getResponse($this->authen),TRUE);
+            return $response;
+        } catch (Exception $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+	
+    public function downloadLogo($logoId) {
+
+        $method = 'download_logo';
+        
+
+        $this->setUrl($this->distributor_url. $method .'/'.$logoId);
+        $this->setGet();
+        try {
+            return json_decode( $this->getResponse($this->authen) );
+        } catch (Exception $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
     
-}
+      public function uploadbrochure($file_path) {
+
+        $method = 'upload_brochure';
+        
+        $extension = pathinfo($file_path,PATHINFO_EXTENSION);
+        $file_size = filesize($file_path);
+        array_push($this->authen,'File-Type: '. $extension);
+        array_push($this->authen,'File-Size: '. $file_size);
+        $postData = array(
+                'file' => '@'.$file_path
+        );
+        $this->setUrl($this->distributor_url . $method);
+        $this->setPost($postData);
+        try {
+            return json_decode( $this->getResponse($this->authen) );
+       } catch (Exception $e) {
+            return 'Error: ' . $e->getMessage();
+       }
+       
+    }
+	
+      public function uploadVideo($file_path) {
+
+        $method = 'upload_video';
+        
+        $extension = pathinfo($file_path,PATHINFO_EXTENSION);
+        $file_size = filesize($file_path);
+        array_push($this->authen,'File-Type: '. $extension);
+        array_push($this->authen,'File-Size: '. $file_size);
+        $postData = array(
+                'file' => '@'.$file_path
+        );
+        $this->setUrl($this->distributor_url . $method);
+        $this->setPost($postData);
+        try {
+            return json_decode( $this->getResponse($this->authen) );
+       } catch (Exception $e) {
+            return 'Error: ' . $e->getMessage();
+       }
+       
+    }
+	
+    public function deleteBrochure($brochure_id) {
+
+        $method = 'delete_brochure';
+
+        $this->setUrl($this->distributor_url . $method);
+        $this->setPost( "brochure_id=".$brochure_id );
+        try {
+            $response = json_decode( $this->getResponse($this->authen),TRUE);
+            return $response;
+        } catch (Exception $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+
+   
+    public function related_operator_get($id) {
+        $method = 'related_operator'; 
+		$this->setUrl($this->distributor_url . $method .'/?operator_d='. $id);
+        $this->setGet();
+        try {
+            return json_decode( $this->getResponse($this->authen) );
+        } catch (Exception $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+	
+	
+	}
 
 ?>

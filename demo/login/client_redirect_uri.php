@@ -5,14 +5,8 @@ include '../../narnoo/http/WebClient.php';
 $authCode = $_GET['code'];
 $state = $_GET['state'];
 
-/*
- * username        : JamesWells
- * password        : 123456
- * app-key         : 8WMVJYd5TF53o0xYZ2
- * app-secrect-key : MbG393WXRn75anUFuxgsw63G78ojI3lI
- */
-$client_id="8WMVJYd5TF53o0xYZ2";
-$client_secret = "MbG393WXRn75anUFuxgsw63G78ojI3lI";
+$client_id="{Access-Key}";
+$client_secret = "{Secret-Key}";
 $redirect_uri = "http://localhost:8888/PHP-SDK-2.0/demo/login/client_redirect_uri.php";
 $headers = array(
     "API-KEY: {$client_id}",

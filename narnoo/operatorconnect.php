@@ -188,6 +188,20 @@ class Operatorconnect extends WebClient {
             return 'Error: ' . $e->getMessage();
         }
     }
+	
+    public function geofeaturesearch($location,$distance) {
+
+        $method = 'geo_feature_search';
+        
+
+        $this->setUrl($this->url . $method .'?location='. urlencode($location). '&distance='. $distance);
+        $this->setGet();
+        try {
+            return json_decode( $this->getResponse($this->authen) );
+        } catch (Exception $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
     
     public function getLogos($op_id) {
 
@@ -365,6 +379,20 @@ class Operatorconnect extends WebClient {
         }
     }
     
+    public function deleteLogo($op_id,$logoId) {
+
+        $method = 'delete_logo';
+
+        $this->setUrl($this->url.$method);
+        $this->setPost( "id=".$op_id."&logo_id=".$logoId );
+        try {
+            $response = json_decode( $this->getResponse($this->authen),TRUE);
+            return $response;
+        } catch (Exception $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+    
     public function deleteDescription($op_id,$description_id) {
 
         $method = 'delete_description';
@@ -483,6 +511,103 @@ class Operatorconnect extends WebClient {
        }
        
     }
+	
+    public function descriptionAddWord($op_id,$description_id,$words,$text) {
+
+        $method = 'description_add_word';
+
+        $this->setUrl($this->url.$method);//die( "operator_id=".$op_id."&description_id=".$description_id."&words=".$words."&text=".$text );
+        $this->setPost( "operator_id=".$op_id."&description_id=".$description_id."&words=".$words."&text=".$text );
+        try {
+            $response = json_decode( $this->getResponse($this->authen),TRUE);
+            return $response;
+        } catch (Exception $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+    
+    public function downloadLogo($op_id,$logoId) {
+
+        $method = 'download_logo';
+        
+
+        $this->setUrl($this->url . $method .'/'. $op_id . '/' .$logoId);
+        $this->setGet();
+        try {
+            return json_decode( $this->getResponse($this->authen) );
+        } catch (Exception $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+  
+	    public function geoSearch($lat,$long,$distance) {
+
+        $method = 'geo_search';
+        $this->setUrl($this->url . $method);
+        $this->setPost('latitude='. $lat . '&longitude=' .$long . '&distance='. $distance);
+ 		
+         try {
+            return json_decode( $this->getResponse($this->authen) );
+        } catch (Exception $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+	
+    public function uploadBrochure($op_id=NULL,$file_path) {
+
+        $method = 'upload_brochure';
+        
+        $extension = pathinfo($file_path,PATHINFO_EXTENSION);
+        $file_size = filesize($file_path);
+        array_push($this->authen,'File-Type: '. $extension);
+        array_push($this->authen,'File-Size: '. $file_size);
+        $postData = array(
+                'id' => $op_id,
+                'file' => '@'.$file_path
+        );
+        $this->setUrl($this->url . $method);
+        $this->setPost($postData);
+        try {
+            return json_decode( $this->getResponse($this->authen) );
+       } catch (Exception $e) {
+            return 'Error: ' . $e->getMessage();
+       }
+       
+    }
+	
+      public function uploadVideo($op_id=NULL,$file_path) {
+
+        $method = 'upload_video';
+        
+        $extension = pathinfo($file_path,PATHINFO_EXTENSION);
+        $file_size = filesize($file_path);
+        array_push($this->authen,'File-Type: '. $extension);
+        array_push($this->authen,'File-Size: '. $file_size);
+        $postData = array(
+                'id' => $op_id,
+                'file' => '@'.$file_path
+        );
+        $this->setUrl($this->url . $method);
+        $this->setPost($postData);
+        try {
+            return json_decode( $this->getResponse($this->authen) );
+       } catch (Exception $e) {
+            return 'Error: ' . $e->getMessage();
+       }
+       
+    }	
+	
+    public function related_operator_get($id) {
+        $method = 'related_operator';echo $this->url . $method .'/?operator_d='. $id;
+		$this->setUrl($this->url . $method .'/?operator_d='. $id);
+        $this->setGet();
+        try {
+            return json_decode( $this->getResponse($this->authen) );
+        } catch (Exception $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+	
     
 }
 
