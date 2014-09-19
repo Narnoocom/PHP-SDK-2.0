@@ -3,8 +3,8 @@
  * CONFIGURATAION KEYS FOR THE DEMO FILES
  */
 $api_settings = array(
-	"API-KEY: {Access-Key}",
-	"API-SECRET-KEY: {Secret-Key}",
-        "Authorization: {Authorization}"
+	"API-KEY: {access-key}",
+	"API-SECRET-KEY: {secret-key}",
+        "Authorization: {access_token}"
 );
 

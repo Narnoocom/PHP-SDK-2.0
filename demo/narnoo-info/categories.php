@@ -5,6 +5,7 @@ include '../../narnoo/categories.php';
 
 $http_request = new Category($api_settings);
 $response = $http_request->getCategories();
+echo '<pre>';
 print_r($response);
-
+echo '</pre>';
 ?>
