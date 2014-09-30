@@ -2,7 +2,7 @@
 
 class Builder extends WebClient {
 
-    public $url = 'http://connect.narnoo.com/builder/';
+    public $url = 'http://connect.narnoo.com/builder_dev/';
     public $authen;
 
     public function __construct($authenticate) {
