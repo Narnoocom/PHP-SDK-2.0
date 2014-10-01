@@ -38,10 +38,23 @@ include '../../narnoo/operator_register.php';
  * 
  */
 
+$business_name = 'Escape2.tv';
+$contact_name = 'James Wells';
+$email = 'jimkenwells@hotmail.com';
+$website = 'http://www.example.com/';
+$country_code = '61';
+$area_code = '07';
+$phone = '40516366';
+$category = 'Attraction';
+$subcategory = 'Reef';
+$keywords = 'Reef,Delete Me,Demo';
+$latitude = NULL;
+$longitude = NULL;
+$address = '181 Mulgrave Road, QLD, Cairns, 4870';
 
 
 $http_request = new Register($api_settings);
-$response = $http_request->registerOperator('{ business name }','{ contact name }','{ email }','{ http://www.website.com/ }','{ country code }','{ area code }','{ phone number }','{ Category }','{ Sub Category }','{ Keywords }','{ Latitude }','{ Longitude }','{ Address }');
+$response = $http_request->registerOperator($business_name,$contact_name,$email,$website,$country_code,$area_code,$phone,$category,$subcategory,$keywords,$latitude,$longitude,$address);
 echo '<pre>';
 print_r($response);
 echo '</pre>';

@@ -2,7 +2,7 @@
 
 class Register extends WebClient {
 
-    public $url = 'http://connect.narnoo.com/registration/';
+    public $url = 'http://connect.narnoo.com/registration_dev/';
     public $authen;
 
     public function __construct($authenticate) {

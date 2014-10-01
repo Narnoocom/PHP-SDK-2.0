@@ -73,12 +73,12 @@ class Distributor extends WebClient {
             return 'Error: ' . $e->getMessage();
         }
     }
-    public function getAlbumImages($dst_id,$album_id) {
+    public function getAlbumImages($album_id) {
 
         $method = 'album_images';
         
 
-        $this->setUrl($this->distributor_url . $method .'/'. $dst_id . '/' .$album_id);
+        $this->setUrl($this->distributor_url . $method .'/' .$album_id);
         $this->setGet();
         try {
             return json_decode( $this->getResponse($this->authen) );
