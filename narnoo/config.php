@@ -7,4 +7,3 @@ $api_settings = array(
 	"API-SECRET-KEY: {SECRET}",
         "Authorization: {TOKEN}"
 );
-

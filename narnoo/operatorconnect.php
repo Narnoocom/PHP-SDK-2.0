@@ -10,12 +10,12 @@ class Operatorconnect extends WebClient {
         $this->authen = $authenticate;
     }
     
-    public function getImages($id) {
+    public function getImages($id,$page=1) {
 
         $method = 'images';
         
 
-        $this->setUrl($this->url . $method .'/'. $id);
+        $this->setUrl($this->url . $method .'/'. $id.'?page='.$page);
         $this->setGet();
         try {
             return json_decode( $this->getResponse($this->authen) );
@@ -24,11 +24,11 @@ class Operatorconnect extends WebClient {
         }
     }
     
-    public function getVideos($id) {
+    public function getVideos($id,$page=1) {
 
         $method = 'videos';
 
-        $this->setUrl($this->url . $method .'/'. $id);
+        $this->setUrl($this->url . $method .'/'. $id.'?page='.$page);
         $this->setGet();
         try {
             return json_decode( $this->getResponse($this->authen) );
@@ -37,11 +37,11 @@ class Operatorconnect extends WebClient {
         }
     }
     
-    public function getBrochures($id) {
+    public function getBrochures($id,$page=1) {
 
         $method = 'brochures';
 
-        $this->setUrl($this->url . $method .'/'. $id);
+        $this->setUrl($this->url . $method .'/'. $id.'?page='.$page);
         $this->setGet();
         try {
             return json_decode( $this->getResponse($this->authen) );
@@ -50,11 +50,11 @@ class Operatorconnect extends WebClient {
         }
     }
     
-    public function getDescriptions($id) {
+    public function getDescriptions($id,$page=1) {
 
         $method = 'descriptions';
 
-        $this->setUrl($this->url . $method .'/'. $id);
+        $this->setUrl($this->url . $method .'/'. $id.'?page='.$page);
         $this->setGet();
         try {
             return json_decode( $this->getResponse($this->authen) );
@@ -91,12 +91,12 @@ class Operatorconnect extends WebClient {
         }
     }
     
-    public function getAlbumImages($op_id,$album_id) {
+    public function getAlbumImages($op_id,$album_id,$page=1) {
 
         $method = 'album_images';
         
 
-        $this->setUrl($this->url . $method .'/'. $op_id . '/' .$album_id);
+        $this->setUrl($this->url . $method .'/'. $op_id . '/' .$album_id.'?page='.$page);
         $this->setGet();
         try {
             return json_decode( $this->getResponse($this->authen) );
@@ -105,12 +105,12 @@ class Operatorconnect extends WebClient {
         }
     }
     
-    public function getAlbums($op_id) {
+    public function getAlbums($op_id,$page=1) {
 
         $method = 'albums';
         
 
-        $this->setUrl($this->url . $method .'/'. $op_id );
+        $this->setUrl($this->url . $method .'/'. $op_id.'?page='.$page );
         $this->setGet();
         try {
             return json_decode( $this->getResponse($this->authen) );
@@ -203,12 +203,12 @@ class Operatorconnect extends WebClient {
         }
     }
     
-    public function getLogos($op_id) {
+    public function getLogos($op_id,$page=1) {
 
         $method = 'logos';
         
 
-        $this->setUrl($this->url . $method .'/'. $op_id );
+        $this->setUrl($this->url . $method .'/'. $op_id.'?page='.$page );
         $this->setGet();
         try {
             return json_decode( $this->getResponse($this->authen) );
@@ -476,12 +476,12 @@ class Operatorconnect extends WebClient {
         }
     }
     
-    public function getOperators() {
+    public function getOperators($page=1) {
 
         $method = 'list_operators';
         
 
-        $this->setUrl($this->url . $method);
+        $this->setUrl($this->url . $method .'/?page='.$page);
         $this->setGet();
         try {
             return json_decode( $this->getResponse($this->authen) );
